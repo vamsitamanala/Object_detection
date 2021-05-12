@@ -1,0 +1,13 @@
+% points = [col row];
+xmin = 1678;%801;%1;%1208;%1;%1;%328;
+xmax = 2383;%952;%1128;%2383;%1220;%381;%782;
+ymin = 1;%848;%1;%1;%1;%792;
+ymax = 1021;%1686;%713;%158;%281;%1686;
+indXmin = find(points(:,1)>=xmin);
+indXmax = find(points(:,1)<=xmax);
+indYmin = find(points(:,2)>=ymin);
+indYmax = find(points(:,2)<=ymax);
+indRemove = intersect(intersect(intersect(indXmin,indXmax),indYmin),indYmax);
+points(indRemove)=0;
+figure;imagesc(imageMatrix);title('Corner Points');
+hold on;plot(points(:,1),points(:,2),'g*','MarkerSize',10);shg;
